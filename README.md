@@ -1,7 +1,8 @@
 # FureyEngine
-A simple class library used to streamline making 2D applications using OpenGL, GLEW, GLM, and SDL.
+A simple class library used to streamline making 2D applications using OpenGL, GLEW, GLM, SDL, and Box2D.
 
 
+#Set Up
 You can install all required packages by entering the following in a Windows command prompt:
 
 git clone https://github.com/microsoft/vcpkg.git
@@ -10,7 +11,14 @@ cd vcpkg
 .\vcpkg integrate install
 .\vcpkg install opengl glew glm sdl2 sdl2-image sdl2-ttf sdl2-mixer sdl2-net box2d
 
+Ensure CMake runs with the following argument:
 
+-DCMAKE_TOOLCHAIN_FILE="C:/Users/USERNAME/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+Before you start development, open CMakeLists.txt and ensure USERNAME is set to your username on your machine.
+
+
+#Development
 Development in FureyEngine is simple:
 
 1. Inherit from the World class to create a world and spawn in actors.
