@@ -2,7 +2,7 @@
 A simple class library used to streamline making 2D applications using OpenGL, GLEW, GLM, SDL, and Box2D.
 
 
-#Set Up
+# Set Up
 You can install all required packages by entering the following in a Windows command prompt:
 
 git clone https://github.com/microsoft/vcpkg.git
@@ -18,7 +18,7 @@ Ensure CMake runs with the following argument:
 Before you start development, open CMakeLists.txt and ensure USERNAME is set to your username on your machine.
 
 
-#Development
+# Development
 Development in FureyEngine is simple:
 
 1. Inherit from the World class to create a world and spawn in actors.
