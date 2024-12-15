@@ -22,7 +22,8 @@ int main(int argc, char **argv) {
 
     // Spawn a player
     const auto Player =
-            World->SpawnActor<PawnActor>(Transform())->Initialize(&Resources::Images["Image"]);
+            World->SpawnActor<PawnActor>(Transform())
+            ->Initialize(&Resources::Images["Image"]);
 
     // Spawn an obstacle
     const auto Obstacle =
