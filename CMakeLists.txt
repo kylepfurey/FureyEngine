@@ -15,11 +15,14 @@ add_definitions(-DROOT="${CMAKE_SOURCE_DIR}/")
 # .\vcpkg integrate install
 # .\vcpkg install opengl glew glm sdl2 sdl2-image sdl2-ttf sdl2-mixer sdl2-net box2d
 
+# ENSURE CMAKE RUNS WITH THE FOLLOWING ARGUMENT
+# -DCMAKE_TOOLCHAIN_FILE="C:/Users/USERNAME/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
 # UPDATE THIS WITH YOUR USERNAME
-set(USER "${kylef}")
+set(USERNAME "${kylepfurey}")
 
 # SET TOOLCHAIN
-set(CMAKE_TOOLCHAIN_FILE "C:/Users/${USER}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/${USERNAME}/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 # FIND PACKAGES
 find_package(OpenGL REQUIRED)
