@@ -14,6 +14,15 @@ namespace FureyEngine {
 
     // EVENTS
 
+    // Automatically called before each actor has already called Start().
+    void ButtonActor::Spawn() {
+        // Calls the base class's function
+        Actor::Spawn();
+
+        // Bind set active to the world's set active function
+        GetWorld()->OnSetActive.Bind(std::bind(ButtonActor::SetActive, this, std::placeholders::_1));
+    }
+
     // Automatically called each world tick.
     void ButtonActor::Tick(const double &DeltaTime) {
         // Calls the base class's function
@@ -181,6 +190,17 @@ namespace FureyEngine {
                     }
                 }
             }
+        }
+    }
+
+    // Automatically called after this actor is destroyed.
+    void ButtonActor::Destroy() {
+        // Calls the base class's function
+        Actor::Destroy();
+
+        // Unbind set active from the world's set active function
+        if (BeginTick) {
+            GetWorld()->OnSetActive.Unbind(std::bind(ButtonActor::SetActive, this, std::placeholders::_1));
         }
     }
 
