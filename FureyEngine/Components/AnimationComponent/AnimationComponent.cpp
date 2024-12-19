@@ -4,8 +4,6 @@
 
 #include "AnimationComponent.h"
 
-#include <utility>
-
 namespace FureyEngine {
     // ANIMATION SEQUENCE
 
@@ -162,12 +160,12 @@ namespace FureyEngine {
 
     // Returns a pointer to the given animation or nullptr if it does not exist.
     AnimationComponent::AnimationSequence *AnimationComponent::GetAnimation(const std::string &AnimationName) {
-        return Animations.count(CurrentAnimation) ? &Animations.at(AnimationName) : nullptr;
+        return Animations.count(AnimationName) ? &Animations.at(AnimationName) : nullptr;
     }
 
     // Returns a pointer to the given animation or nullptr if it does not exist.
     AnimationComponent::AnimationSequence *AnimationComponent::operator[](const std::string &AnimationName) {
-        return Animations.count(CurrentAnimation) ? &Animations.at(AnimationName) : nullptr;
+        return Animations.count(AnimationName) ? &Animations.at(AnimationName) : nullptr;
     }
 
     // Returns a map of each animation name to a pointer to that animation sequence.
@@ -181,7 +179,7 @@ namespace FureyEngine {
 
     // Returns whether the given animation exists in this component by name.
     bool AnimationComponent::HasAnimation(const std::string &AnimationName) const {
-        return Animations.count(CurrentAnimation);
+        return Animations.count(AnimationName);
     }
 
     // Returns the number of animations in this component.
@@ -233,7 +231,7 @@ namespace FureyEngine {
             return false;
         }
 
-        Animations.erase(CurrentAnimation);
+        Animations.erase(AnimationName);
         Animations.try_emplace(AnimationName, AnimationName, Animation, Framerate);
         return true;
     }
