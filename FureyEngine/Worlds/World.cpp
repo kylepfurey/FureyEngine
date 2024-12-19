@@ -1,5 +1,5 @@
 // .cpp
-// Game World Class Script
+// Scriptable World Class Script
 // by Kyle Furey
 
 #include "World.h"
@@ -65,7 +65,7 @@ namespace FureyEngine {
             return nullptr;
         }
         if (Delay <= 0) {
-            Delay = 0.00001;
+            Delay = 0.000001;
         }
         ScheduledEvents.push_back({
             Delay, [=] {
