@@ -74,6 +74,9 @@ namespace FureyEngine {
         // Calls the base class's function
         Component::Start();
 
+        // Bind set active to the actor's set active function
+        GetActor()->OnSetActive.Bind(std::bind(BrushComponent::SetActive, this, std::placeholders::_1));
+
         // Update collision responses
         for (const auto &Element: AllBrushes[static_cast<World *>(GetActor()->GetWorld())]) {
             if (Element == this) {
@@ -165,11 +168,33 @@ namespace FureyEngine {
         }
     }
 
+    // Automatically called after this component is removed.
+    void BrushComponent::Remove() {
+        // Calls the base class's function
+        Component::Remove();
+
+        // Unbind set active from the actor's set active function
+        if (BeginTick) {
+            GetActor()->OnSetActive.Unbind(std::bind(BrushComponent::SetActive, this, std::placeholders::_1));
+        }
+    }
+
     // ACTIVITY
 
     // Sets whether this component is active.
     // This can be overridden to control custom functionality.
     void BrushComponent::SetActive(const bool &Active) {
+        // Add or remove this brush from the world's brushes
+        if (IsActive()) {
+            if (!Active) {
+                AllBrushes[static_cast<World *>(GetActor()->GetWorld())].erase(this);
+            }
+        } else {
+            if (Active) {
+                AllBrushes[static_cast<World *>(GetActor()->GetWorld())].insert(this);
+            }
+        }
+
         // Calls the base class's function
         Component::SetActive(Active);
 
