@@ -57,6 +57,9 @@ namespace FureyEngine {
         // Calls the base class's function
         Component::Attach();
 
+        // Bind set active to the actor's set active function
+        GetActor()->OnSetActive.Bind(std::bind(BrushComponent::SetActive, this, std::placeholders::_1));
+
         // Adds this brush to the set of all brushes
         AllBrushes[static_cast<World *>(GetActor()->GetWorld())].insert(this);
 
@@ -73,9 +76,6 @@ namespace FureyEngine {
     void BrushComponent::Start() {
         // Calls the base class's function
         Component::Start();
-
-        // Bind set active to the actor's set active function
-        GetActor()->OnSetActive.Bind(std::bind(BrushComponent::SetActive, this, std::placeholders::_1));
 
         // Update collision responses
         for (const auto &Element: AllBrushes[static_cast<World *>(GetActor()->GetWorld())]) {
