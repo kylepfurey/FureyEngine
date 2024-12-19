@@ -228,20 +228,20 @@ namespace FureyEngine {
     // Returns whether an animation was overwritten.
     bool AnimationComponent::AddAnimation(const std::string &AnimationName, Animation *Animation,
                                           const int &Framerate) {
-        if (!Animations.count(CurrentAnimation)) {
-            Animations.try_emplace(CurrentAnimation, CurrentAnimation, Animation, Framerate);
+        if (!Animations.count(AnimationName)) {
+            Animations.try_emplace(AnimationName, AnimationName, Animation, Framerate);
             return false;
         }
 
         Animations.erase(CurrentAnimation);
-        Animations.try_emplace(CurrentAnimation, CurrentAnimation, Animation, Framerate);
+        Animations.try_emplace(AnimationName, AnimationName, Animation, Framerate);
         return true;
     }
 
     // Remove an animation by name from this component.
     // Returns whether the animation was successfully removed.
     bool AnimationComponent::RemoveAnimation(const std::string &AnimationName) {
-        if (Animations.count(CurrentAnimation)) {
+        if (Animations.count(AnimationName)) {
             Animations.erase(AnimationName);
             return true;
         }
