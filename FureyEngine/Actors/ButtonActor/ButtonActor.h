@@ -83,11 +83,17 @@ namespace FureyEngine {
 
         // EVENTS
 
+        /** Automatically called before each actor has already called Start(). */
+        void Spawn() override;
+
         /** Automatically called each world tick. */
         void Tick(const double &DeltaTime) override;
 
         /** Automatically called after each actor has already called Tick(). */
         void LateTick(const double &DeltaTime) override;
+
+        /** Automatically called after this actor is destroyed. */
+        void Destroy() override;
 
         // ACTIVITY
 
