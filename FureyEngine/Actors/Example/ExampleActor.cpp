@@ -21,7 +21,7 @@ namespace FureyEngine {
         // Calls the base class's function
         Actor::Spawn();
 
-        // Bind set active to the actor's set active function
+        // Bind set active to the world's set active function
         GetWorld()->OnSetActive.Bind(std::bind(ExampleActor::SetActive, this, std::placeholders::_1));
 
         // New code here
