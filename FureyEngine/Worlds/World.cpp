@@ -65,7 +65,7 @@ namespace FureyEngine {
             return nullptr;
         }
         if (Delay <= 0) {
-            Delay = 0.000001;
+            Delay = 0.0000001;
         }
         ScheduledEvents.push_back({
             Delay, [=] {
