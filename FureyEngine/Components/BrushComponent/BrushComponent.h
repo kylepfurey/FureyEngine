@@ -126,6 +126,9 @@ namespace FureyEngine {
         /** Automatically called after each component has already called Tick(). */
         void LateTick(const double &DeltaTime) override;
 
+        /** Automatically called after this component is removed. */
+        void Remove() override;
+
         // ACTIVITY
 
         /**
