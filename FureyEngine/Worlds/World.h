@@ -1,5 +1,5 @@
 // .h
-// Game World Class Script
+// Scriptable World Class Script
 // by Kyle Furey
 
 #pragma once
