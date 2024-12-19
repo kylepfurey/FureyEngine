@@ -1,5 +1,5 @@
 // .h
-// Furey Engine Script
+// Furey Engine Header Script
 // by Kyle Furey
 
 #pragma once
